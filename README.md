@@ -1,8 +1,7 @@
 # TF-Faster RCNN
 This is project. I forked from https://github.com/CharlesShang/TFFRCNN.
 </br> And I change a little on PVANet to implement it successfully.
-</br> Because I need feature from output of FC6 and location information from bounding box, I also rewrite demo code.
-</br>
+</br> Because I need feature from output of FC6 and location information from bounding box, storing them into .npz file. So I also rewrite demo code. 
 </br> Here we can implement Faster-RCNN by VGGnet, ResNet50, ResNet101 or PVANet.
 
 ### Requirements: software
@@ -13,7 +12,6 @@ This is project. I forked from https://github.com/CharlesShang/TFFRCNN.
 1. For training the end-to-end version of Faster R-CNN with VGG16, 3G of GPU memory is sufficient (using CUDNN)
 
 ### Installation (sufficient for the demo)
-
 1. Clone the Faster R-CNN repository
   ```Shell
   git clone https://github.com/CharlesShang/TFFRCNN.git
@@ -26,7 +24,6 @@ This is project. I forked from https://github.com/CharlesShang/TFFRCNN.
     ```
 
 ### Demo
-
 *After successfully completing [basic installation](#installation-sufficient-for-the-demo)*, you'll be ready to run the demo.
 
 To run the demo
@@ -45,7 +42,6 @@ The demo performs detection using a VGG16 network trained for detection on PASCA
 6. [PVANet trained on ImageNet, converted from caffemodel](https://drive.google.com/open?id=0B_xFdh9onPagQnJBdWl3VGQxam8)
 
 ### Training on Pascal VOC 2007
-
 1. Download the training, validation, test data and VOCdevkit
 
     ```Shell
@@ -98,7 +94,6 @@ The demo performs detection using a VGG16 network trained for detection on PASCA
     ```
 
 ### Training on KITTI detection dataset
-
 1. Download the KITTI detection dataset
 
     ```
