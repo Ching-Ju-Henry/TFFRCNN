@@ -2,11 +2,6 @@
 This is project. I forked from https://github.com/CharlesShang/TFFRCNN.
 </br>And I change a little on PVANet to implement it successfully.
 
-### Acknowledgments: 
-1. [py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn)
-2. [Faster-RCNN_TF](https://github.com/smallcorgi/Faster-RCNN_TF)
-3. [ROI pooling](https://github.com/zplizzi/tensorflow-fast-rcnn)
-
 ### Requirements: software
 1. Requirements for Tensorflow (see: [Tensorflow](https://www.tensorflow.org/))
 2. Python packages you might not have: `cython`, `python-opencv`, `easydict` (recommend to install: [Anaconda](https://www.continuum.io/downloads))
