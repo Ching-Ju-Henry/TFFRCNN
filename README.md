@@ -1,8 +1,8 @@
 # TF-Faster RCNN
 This is project. I forked from https://github.com/CharlesShang/TFFRCNN.
-</br> And I change a little on PVANet to implement it successfully.
-</br> Because I need feature from output of FC6 and location information from bounding box, storing them into .npz file. So I also rewrite demo code. 
-</br> Here we can implement Faster-RCNN by VGGnet, ResNet50, ResNet101 or PVANet.
+</br> (1) I change a little on PVANet to implement it successfully.
+</br> (2) Because I need feature from output of FC6 and location information from bounding box, storing them into .npz file. So I also rewrite demo code. 
+### Here we can implement Faster-RCNN by VGGnet, ResNet50, ResNet101 or PVANet.
 
 ### Requirements: software
 1. Requirements for Tensorflow (see: [Tensorflow](https://www.tensorflow.org/))
