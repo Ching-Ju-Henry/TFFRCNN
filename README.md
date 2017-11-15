@@ -1,38 +1,17 @@
-# TFFRCNN
-
-This is an experimental **T**ensor **F**low implementation of **F**aster **RCNN** (**TFFRCNN**), mainly based on the work of [smallcorgi](https://github.com/smallcorgi/Faster-RCNN_TF) and [rbgirshick](https://github.com/rbgirshick/py-faster-rcnn). I have re-organized the libraries under `lib` path, making each of python modules independent to each other, so you can understand, re-write the code easily.
-
-For details about R-CNN please refer to the paper [Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks](http://arxiv.org/pdf/1506.01497v3.pdf) by Shaoqing Ren, Kaiming He, Ross Girshick, Jian Sun.
-
-### What's New
-
-- [x] Resnet networks support
-- [x] KITTI object detection dataset support
-- [x] **P**osition **S**ensitive **ROI Pooling** (psroi_pooling), not testing yet
-- [x] Hard Example Mining
-- [x] Data Augment
-- [x] PVANet
-- [x] Tensorflow 1.0
-- [ ] R-FCN
-- [ ] Multi-layer Architecture (HyperNet)
-- [ ] more hacks...
+# TF-Faster RCNN
+This is project. I forked from https://github.com/CharlesShang/TFFRCNN.
+</br>And I change a little on PVANet to implement it successfully.
 
 ### Acknowledgments: 
-
 1. [py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn)
-
 2. [Faster-RCNN_TF](https://github.com/smallcorgi/Faster-RCNN_TF)
-
 3. [ROI pooling](https://github.com/zplizzi/tensorflow-fast-rcnn)
 
 ### Requirements: software
-
 1. Requirements for Tensorflow (see: [Tensorflow](https://www.tensorflow.org/))
-
 2. Python packages you might not have: `cython`, `python-opencv`, `easydict` (recommend to install: [Anaconda](https://www.continuum.io/downloads))
 
 ### Requirements: hardware
-
 1. For training the end-to-end version of Faster R-CNN with VGG16, 3G of GPU memory is sufficient (using CUDNN)
 
 ### Installation (sufficient for the demo)
