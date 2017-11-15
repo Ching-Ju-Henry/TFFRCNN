@@ -1,7 +1,7 @@
 # TF-Faster RCNN
 This is project. I forked from https://github.com/CharlesShang/TFFRCNN.
 </br> And I change a little on PVANet to implement it successfully.
-</br> Because I need some information from FC7 and BBox, I also rewrite some code.
+</br> Because I need feature from output of FC6 and location information from bounding box, I also rewrite demo code.
 
 ### Requirements: software
 1. Requirements for Tensorflow (see: [Tensorflow](https://www.tensorflow.org/))
