@@ -67,7 +67,7 @@ if __name__ == '__main__':
     print('Using config:')
     pprint.pprint(cfg)
 
-    while not os.path.exists(args.model) and args.wait:
+    while not os.path.exists(args.model+'.index') and args.wait: #################using pva : +'.index'
         print('Waiting for {} to exist...'.format(args.model))
         time.sleep(1000)
 
@@ -83,7 +83,7 @@ if __name__ == '__main__':
     print 'Use network `{:s}` in training'.format(args.network_name)
 
     cfg.GPU_ID = args.gpu_id
-
+    
     # start a session
     saver = tf.train.Saver()
     sess = tf.Session(config=tf.ConfigProto(allow_soft_placement=True))
