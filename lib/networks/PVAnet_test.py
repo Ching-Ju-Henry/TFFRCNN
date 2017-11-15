@@ -28,7 +28,7 @@ class PVAnet_test(Network):
         (self.feed('data')
          .pva_negation_block(7, 7, 16, 2, 2, name='conv1_1', negation=True)  # downsample
          .max_pool(3, 3, 2, 2, padding='VALID', name='pool1')  # downsample
-         .conv(1, 1, 24, 1, 1, name='conv2_1/1/conv', biased=True, relu=False)
+         .conv(1, 1, 24, 1, 1, name='conv2_1/1/conv', biased=True, relu=False) #biased=True
          .pva_negation_block_v2(3, 3, 24, 1, 1, 24, name='conv2_1/2', negation=False)
          .pva_negation_block_v2(1, 1, 64, 1, 1, 24, name='conv2_1/3', negation=True))
 
@@ -82,14 +82,14 @@ class PVAnet_test(Network):
          .pva_inception_res_block(name='conv4_4', name_prefix='conv4_', type='a')  # downsample
          .pva_inception_res_block(name='conv5_4', name_prefix='conv5_', type='b')  # downsample
          .batch_normalization(name='conv5_4/last_bn', relu=False)
-         .scale(c_in=384, name='conv5_4/last_bn_scale')
+         #.scale(c_in=384, name='conv5_4/last_bn_scale')
          .relu(name='conv5_4/last_relu'))
 
         (self.feed('conv5_4/last_relu')
          .upconv(tf.shape(self.layers['downsample']),
                  384, 4, 2, name='upsample', biased=False, relu=False, trainable=True))  # upsample
 
-        (self.feed('downsample', 'conv4_4', 'upsample')
+        (self.feed('downsample', 'conv4_4')#(self.feed('downsample', 'conv4_4', 'upsample')
          .concat(axis=3, name='concat'))
 
         # ========= RPN ============
@@ -115,11 +115,11 @@ class PVAnet_test(Network):
         # ========= RCNN ============
         (self.feed('concat')
          .conv(1, 1, 384, 1, 1, name='convf_2', biased=True, relu=True))
-        (self.feed('convf_rpn', 'convf_2')
-         .concat(axis=3, name='convf'))
+        #(self.feed('convf_rpn', 'convf_2')
+        # .concat(axis=3, name='convf'))
 
-        (self.feed('convf', 'rois')
-         .roi_pool(7, 7, 1.0 / 16, name='roi_pooling')
+        (self.feed('convf_2', 'rois')#(self.feed('convf', 'rois')
+         .roi_pool(6, 6, 1.0/16, name='roi_pooling')#.roi_pool(7, 7, 1.0 / 16, name='roi_pooling')
          .fc(4096, name='fc6', relu=False)
          .bn_scale_combo(c_in = 4096, name='fc6', relu=True)
          .fc(4096, name='fc7', relu=False)
