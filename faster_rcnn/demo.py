@@ -187,11 +187,7 @@ if __name__ == '__main__':
     # load network
     net = get_network(args.demo_net)
     # load model
-    sess.run(tf.global_variables_initializer())#########################################
     print ('Loading network {:s}... '.format(args.demo_net)),
-    
-    
-    
     saver = tf.train.Saver()
     saver.restore(sess, args.model)
 
