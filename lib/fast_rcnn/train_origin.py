@@ -11,7 +11,7 @@ import os
 import tensorflow as tf
 from tensorflow.python.client import timeline
 import cv2
-import tensorlayer as tl
+
 from .nms_wrapper import nms_wrapper
 from ..roi_data_layer.layer import RoIDataLayer
 from ..utils.timer import Timer
@@ -55,7 +55,6 @@ class SolverWrapper(object):
         bounding-box regression weights. This enables easy use at test-time.
         """
         net = self.net
-        print net
 
         if cfg.TRAIN.BBOX_REG and net.layers.has_key('bbox_pred') and cfg.TRAIN.BBOX_NORMALIZE_TARGETS:
             # save original values
@@ -79,12 +78,7 @@ class SolverWrapper(object):
         filename = (cfg.TRAIN.SNAPSHOT_PREFIX + infix +
                     '_iter_{:d}'.format(iter+1) + '.ckpt')
         filename = os.path.join(self.output_dir, filename)
-        
-        #filename2 = (cfg.TRAIN.SNAPSHOT_PREFIX + infix +
-        #            '_iter_{:d}'.format(iter+1) + '.npz')
-        #filename2 = os.path.join(self.output_dir, filename2)
-        
-        #tl.files.save_npz(sess, filename2)
+
         self.saver.save(sess, filename)
         print 'Wrote snapshot to: {:s}'.format(filename)
 

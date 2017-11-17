@@ -168,9 +168,9 @@ def im_detect(sess, net, im, boxes=None):
     else:
         feed_dict={net.data: blobs['data'], net.rois: blobs['rois'], net.keep_prob: 1.0}
 
-    cls_score, cls_prob, bbox_pred, rois, fc6 = \
-        sess.run([net.get_output('cls_score'), net.get_output('cls_prob'), net.get_output('bbox_pred'),net.get_output('rois'), net.get_output('fc6')],\
-                 feed_dict=feed_dict)########!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    cls_score, cls_prob, bbox_pred, rois = \
+        sess.run([net.get_output('cls_score'), net.get_output('cls_prob'), net.get_output('bbox_pred'),net.get_output('rois')],\
+                 feed_dict=feed_dict)
     
     if cfg.TEST.HAS_RPN:
         assert len(im_scales) == 1, "Only single-image batch implemented"
@@ -199,7 +199,7 @@ def im_detect(sess, net, im, boxes=None):
         scores = scores[inv_index, :]
         pred_boxes = pred_boxes[inv_index, :]
 
-    return scores, pred_boxes, fc6
+    return scores, pred_boxes
 
 def vis_detections(im, class_name, dets, thresh=0.8):
     """Visual debugging of detections."""
@@ -291,7 +291,7 @@ def test_net(sess, net, imdb, weights_filename , max_per_image=300, thresh=0.05,
 
         im = cv2.imread(imdb.image_path_at(i))
         _t['im_detect'].tic()
-        scores, boxes, fc6 = im_detect(sess, net, im, box_proposals)
+        scores, boxes = im_detect(sess, net, im, box_proposals)
         detect_time = _t['im_detect'].toc(average=False)
 
         _t['misc'].tic()
