@@ -64,7 +64,7 @@ def demo(sess, net, image_name):
     # Detect all object classes and regress object bounds
     timer = Timer()
     timer.tic()
-    scores, boxes = im_detect(sess, net, im)
+    scores, boxes, feature = im_detect(sess, net, im)
     timer.toc()
     print ('Detection took {:.3f}s for '
            '{:d} object proposals').format(timer.total_time, boxes.shape[0])
@@ -96,7 +96,7 @@ def parse_args():
                         help='Use CPU mode (overrides --gpu)',
                         action='store_true')
     parser.add_argument('--net', dest='demo_net', help='Network to use [vgg16]',
-                        default='VGGnet_test')
+                        default='PVAnet_test')
     parser.add_argument('--model', dest='model', help='Model path',
                         default=' ')
 
@@ -110,9 +110,9 @@ if __name__ == '__main__':
 
     args = parse_args()
 
-    if args.model == ' ' or not os.path.exists(args.model):
-        print ('current path is ' + os.path.abspath(__file__))
-        raise IOError(('Error: Model not found.\n'))
+    #if args.model == ' ' or not os.path.exists(args.model):
+    #    print ('current path is ' + os.path.abspath(__file__))
+    #    raise IOError(('Error: Model not found.\n'))
 
     # init session
     sess = tf.Session(config=tf.ConfigProto(allow_soft_placement=True))
@@ -127,7 +127,7 @@ if __name__ == '__main__':
     # Warmup on a dummy image
     im = 128 * np.ones((300, 300, 3), dtype=np.uint8)
     for i in xrange(2):
-        _, _ = im_detect(sess, net, im)
+        _, _, _ = im_detect(sess, net, im)
 
     im_names = glob.glob(os.path.join(cfg.DATA_DIR, 'demo', '*.png')) + \
                glob.glob(os.path.join(cfg.DATA_DIR, 'demo', '*.jpg'))
