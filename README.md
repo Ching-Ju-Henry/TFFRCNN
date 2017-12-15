@@ -2,6 +2,8 @@
 About this project. I forked from https://github.com/CharlesShang/TFFRCNN.
 </br> (1) I change a little on PVANet to implement it successfully (including training and testing).
 </br> (2) Because I need feature from output of FC6 and location information from bounding box, storing them into .npz file. So I &nbsp; &nbsp; &emsp; also  rewrite demo code. 
+</br> (3) I use *demo_DL.py and evaluate.py* to evaluating the results of classification and bounding box  
+
 ### Here we can implement Faster-RCNN by VGGnet, ResNet50, ResNet101 or PVANet.
 
 ### Requirements: software
